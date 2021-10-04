@@ -1,0 +1,35 @@
+form {
+    margin: 50px auto;
+    text-align: center;
+    max-width: 300px;
+
+
+    .inputDiv {
+        width: 100%;
+        margin: 10px 0;
+  
+        label {
+            font-weight: bold;
+            width: 100%;
+            display: block;
+            text-align: left;
+        }
+        input {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            margin: 10px 0;
+
+            &[type=submit] {
+                background-color: $green_light;
+                border-radius: 50px;
+    
+                &:hover {
+                    background-color: $green_dark;
+                    color: white;
+                    box-shadow: 3px 3px 10px 12px #ccc;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+//Variables
+
+$red: rgb(255, 0, 0);
+$green: rgb(0, 128, 0);
+$blue: rgb(0, 0, 255);
+$yellow: rgb(255, 255, 0);
+
+$red_light: lighten($red, 30%);
+$green_light: lighten($green, 30%);
+$blue_light: lighten($blue, 30%);
+$yellow_light: lighten($yellow, 30%);
+
+$red_dark: darken($red, 20%);
+$green_dark: darken($green, 20%);
+$blue_dark: darken($blue, 30%);
+$yellow_dark: darken($yellow, 20%);
+
+$text: rgb(26, 26, 26);
+
+$font_header: sans-serif;
+$font: sans-serif;

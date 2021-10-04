@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Courses Application</title>
+</head>
+<body>
+
+    <header>
+        <picture>
+            <source srcset="img/webp/api.webp" type="image/webp">
+            <img src="img/api.png" alt="Icon">
+        </picture>
+        <div>
+            <h1>Moment 5</h1>
+        </div>
+    </header>
+    <main>
+        <h2>Courses</h2>
+
+
+        <table id="course_table"></table>
+
+        <hr>
+
+        <h2>Add Course</h2>
+
+
+        <form id="course_form" method="POST" >
+
+            <div class="inputDiv">
+                <label for="code">Course Code:</label>
+                <input id="code" name="code" type="text" placeholder="ex. DT057G">
+            </div>
+
+            <div class="inputDiv">
+                <label for="name">Course Name:</label>
+                <input id="name" name="name" type="text" placeholder="ex. Webbutveckling 1">
+            </div>
+
+            <div class="inputDiv">
+                <label for="progression">Progression:</label>
+                <input id="progression" name="progression" type="text" placeholder="ex. A">
+            </div>
+
+            <div class="inputDiv">
+                <label for="term">Term:</label>
+                <input id="term" name="term" type="number" placeholder="ex. 1">
+            </div>
+
+            <div class="inputDiv">
+                <label for="syllabus">Syllabus:</label>
+                <input id="syllabus" name="syllabus" type="text" placeholder="https://website.com">
+            </div>
+
+            <div class="inputDiv">
+                <input id="submit" type="submit" value="Add Course">
+            </div>
+
+        </form>
+
+
+
+    </main>
+    <footer>
+
+    </footer>
+    <script src="js/typescript.js"></script>
+</body>
+</html>

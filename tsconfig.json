@@ -1,0 +1,13 @@
+{
+    "include": [
+        "src/ts/*.ts"
+    ],
+    "compilerOptions": {
+        "outDir": "pub/js",
+        "outFile": "typescript.js",
+        "noImplicitAny": true,
+        "target": "es5",
+        "sourceMap": true,
+        "removeComments" : true
+    }
+}
