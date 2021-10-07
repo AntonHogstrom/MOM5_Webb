@@ -16,6 +16,9 @@ table {
     .delete {
         @include submit;
         background-color: $red_light !important;
+        max-width: 200px;
+        margin: 5px auto;
+
 
         &:hover {
             background-color: $red_dark;
@@ -25,6 +28,8 @@ table {
     .edit {
         @include submit;
         background-color: $yellow_light !important;
+        max-width: 200px;
+        margin: 5px auto;
 
         &:hover {
             background-color: $yellow_dark;

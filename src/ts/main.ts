@@ -17,9 +17,9 @@ const termInput = <HTMLInputElement>document.getElementById("term");
 const syllabusInput = <HTMLInputElement>document.getElementById("syllabus");
 const submit = <HTMLInputElement>document.getElementById("submit");
 
-
 let api : string;
 
+//localhost for private, devnoe.com for public
 if(window.location.hostname == "localhost") {
     api = "https://localhost/mom5_api/api";
 } else {
@@ -77,6 +77,7 @@ function getCourses() {
     })
     .then(data => {
         if(!data.message) {
+            //for each course, print tr with td for each data
             data.forEach((course : {code: string, courseName: string, progression: string, term: number, syllabus: string}) => {
                 table.innerHTML += 
                             `<tr>
@@ -122,6 +123,7 @@ function getCourse(code : string) {
     .then(data => {
         if(!data.message) {
             data.forEach((course : {code: string, courseName: string, progression: string, term: number, syllabus: string}) => {
+            //for each course, print tr with td for each data      
                 table.innerHTML += 
                             `<tr>
                                 <td class="bold">${course.code}</td>
@@ -150,7 +152,7 @@ function updateInputs(code : HTMLInputElement) {
 
     getCourse(code.id);
 
-
+//Print out the update form
     table.insertAdjacentHTML("afterend", `
                 
     <form id="update_form" method="POST">
@@ -199,9 +201,9 @@ const update = <HTMLInputElement>document.getElementById("update");
     //Update Course function
     function updateCourse(course : string) {
 
-        let code = update_code.innerHTML;
+        let code = update_code.innerHTML.toUpperCase();
         let courseName = update_name.value
-        let progression = update_progression.value;
+        let progression = update_progression.value.toUpperCase();
         let term = update_term.value;
         let syllabus = update_syllabus.value;
     
@@ -219,7 +221,7 @@ const update = <HTMLInputElement>document.getElementById("update");
             console.log("ERROR: ", error);
         })
     }
-
+    //prevents form from being posted
     update_form.addEventListener("submit", (e) => {
         e.preventDefault();
         updateCourse(code.id);
@@ -231,6 +233,7 @@ const update = <HTMLInputElement>document.getElementById("update");
 }
 
 //function for deleting course
+//Delete course with ID, sends request to database
 function deleteCourse(course : {id:string}) {
     fetch(api + "?code=" + course.id, {
         method: 'DELETE',
@@ -246,10 +249,11 @@ function deleteCourse(course : {id:string}) {
 
 
 //function for adding new course
+//takes values from input fields and sends them to database with a fetch POST
 function submitCourse() {
-    let code = codeInput.value;
+    let code = codeInput.value.toUpperCase();
     let courseName = courseNameInput.value;
-    let progression = progressionInput.value;
+    let progression = progressionInput.value.toUpperCase();
     let term = termInput.value;
     let syllabus = syllabusInput.value;
 
