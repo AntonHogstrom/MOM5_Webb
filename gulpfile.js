@@ -1,14 +1,12 @@
 //Gulp Methods installed from NPM packages
 const {src, dest, watch, series, parallel} = require('gulp');
 const concat = require('gulp-concat');
-const terser = require('gulp-terser');
 const htmlMin = require('gulp-htmlmin');
 const browserSync = require('browser-sync').create();
 const sourceMap = require('gulp-sourcemaps');
 const imageMin = require('gulp-imagemin');
 const webp = require('gulp-webp');
 const sass = require('gulp-sass')(require('sass'));
-const babel = require('gulp-babel');
 const ts = require('gulp-typescript');
 const tsProject = ts.createProject('tsconfig.json');
 
@@ -36,20 +34,7 @@ function htmlTask() {
     .pipe(tsProject())
     .pipe(dest("pub/js"));
 }
-/*
-//JS-task, initiates sourcemap, contatinate, minify JS-files, writes out sourcemap file, push files to pub (folder).
-function jsTask() {
-    return src(files.jsPath)
-    .pipe(babel({
-        targets: {"ie": 11}
-    }))
-    .pipe(sourceMap.init())
-    .pipe(concat('main.js'))
-    .pipe(terser())
-    .pipe(sourceMap.write('../maps'))
-    .pipe(dest('pub/js'));
-}
-*/
+
 //SASS-task, returns the main sass-file, initiates sourcemap, cancatinates(for rename), compiles sass to css, compress, log errors, write sourcemap, send file to pub/css, update browser on css changes. 
 function sassTask() {
     return src(files.sassPath)
@@ -84,7 +69,6 @@ function watchTask() {
     });
 
     watch(files.tsPath, tsTask).on('change', browserSync.reload);
-    //watch(files.jsPath, jsTask).on('change', browserSync.reload);
     watch(files.htmlPath, htmlTask).on('change', browserSync.reload);
     watch(files.sassPath, sassTask).on('change', browserSync.reload);
     watch(files.imgPath, imgTask).on('change', browserSync.reload);
@@ -96,6 +80,6 @@ function watchTask() {
 
 //gulp default exports.
 exports.default = series(
-    parallel(htmlTask, tsTask, /*jsTask,*/ sassTask, imgTask, webpTask),
+    parallel(htmlTask, tsTask, sassTask, imgTask, webpTask),
     watchTask
 );

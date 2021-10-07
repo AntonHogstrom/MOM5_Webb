@@ -1,10 +1,10 @@
-form {
+#course_form, #update_form {
     margin: 50px auto;
     text-align: center;
     max-width: 300px;
 
 
-    .inputDiv {
+    .inputDiv, .updateDiv {
         width: 100%;
         margin: 10px 0;
   
@@ -16,20 +16,13 @@ form {
         }
         input {
             width: 100%;
-            text-align: center;
-            padding: 10px;
-            margin: 10px 0;
+            @include input;
 
             &[type=submit] {
-                background-color: $green_light;
-                border-radius: 50px;
-    
-                &:hover {
-                    background-color: $green_dark;
-                    color: white;
-                    box-shadow: 3px 3px 10px 12px #ccc;
-                }
+                @include submit;
             }
         }
     }
 }
+
+

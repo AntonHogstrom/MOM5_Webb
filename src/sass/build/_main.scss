@@ -1,12 +1,46 @@
 main {
-    max-width: 1000px;
+    max-width: 1400px;
     margin: 50px auto;
     padding: 50px;
+
+    @media all and (max-width: 600px) {
+        width: 100%;
+        padding: 50px 0;
+    }
+
+
+    #buttonDiv {
+        margin: auto;
+        max-width: 500px;
+
+        #getAll {
+            @include input;
+            display: block;
+            @include submit;
+        }
+        #getOne_div {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+
+            #getOne_input, #getOne_button {
+                width: 100%;
+                @include input;
+            }
+            #getOne_button {
+            @include submit;
+            }
+        }
+    }
 
     h2 {
         text-align: center;
     }
     hr {
         margin: 50px;
+    }
+
+    #code_update {
+        margin-bottom: 30px;
     }
 }

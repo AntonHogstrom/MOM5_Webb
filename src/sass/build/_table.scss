@@ -2,12 +2,75 @@ table {
     margin: 50px auto;
     text-align: center;
     width: 100%;
+    border-collapse: collapse;
+
     td, th {
         padding: 10px;
         max-width: 100%;
     }
 
-    tr:nth-child(even) {
+    tbody:nth-child(even) {
         background-color: #eee;
     }
+
+    .delete {
+        @include submit;
+        background-color: $red_light !important;
+
+        &:hover {
+            background-color: $red_dark;
+        }
+    }
+
+    .edit {
+        @include submit;
+        background-color: $yellow_light !important;
+
+        &:hover {
+            background-color: $yellow_dark;
+        }
+    }
+}
+
+
+//https://css-tricks.com/responsive-data-tables/ + some customization
+@media 
+only screen and (max-width: 1200px)  {
+
+    tr {
+        background-color: white;
+
+        td:nth-child(even) {
+            background-color: #eee;
+        }
+    }
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	td { 
+        text-align: left;
+	}
+	
+	/*
+	Label the data
+	*/
+	td:nth-of-type(1):before { content: "Course Code: "; }
+	td:nth-of-type(2):before { content: "Course Name: "; }
+	td:nth-of-type(3):before { content: "Progression: "; }
+	td:nth-of-type(4):before { content: "Term: "; }
+	td:nth-of-type(5):before { content: "Syllabus: "; }
+}
+
+@media all and (max-width: 600px) {
+
 }

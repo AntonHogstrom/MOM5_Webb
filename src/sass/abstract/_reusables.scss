@@ -1,3 +1,18 @@
-@mixin test {
-    display: none;
+
+@mixin input {
+    text-align: center;
+    padding: 10px;
+    margin: 10px auto;
+}
+@mixin submit {
+    background-color: $green_light;
+    border-radius: 50px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $green_dark;
+        color: white;
+        box-shadow: 3px 3px 6px 6px #ccc;
+    }
 }
